@@ -3,6 +3,8 @@ body {
     font-family: Arial, sans-serif;
     color: white;
     overflow: hidden;
+    width: 100vw;
+    height: 100vh;
 }
 
 .video-background {
@@ -31,11 +33,11 @@ body {
 }
 
 .video-wrapper {
-    flex: 0 0 100%;
-    width: 100%;
-    height: 100%;
-    scroll-snap-align: start;
     position: relative;
+    flex: 0 0 100%;
+    width: 100vw;
+    height: 100vh;
+    scroll-snap-align: start;
     overflow: hidden;
 }
 
@@ -43,12 +45,27 @@ body {
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 100vw;
-    height: 100vh;
-    transform: translate(-50%, -50%) scale(1.1);
-    border: none;
-    pointer-events: none;
-    object-fit: cover;
+    transform: translate(-50%, -50%);
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+}
+
+@media (min-aspect-ratio: 16/9) {
+    .video-wrapper iframe {
+        width: 100vw;
+        height: 56.25vw; /* height: 100 * (9/16) = 56.25 */
+        transform: translate(-50%, -50%) scale(1.1);
+    }
+}
+
+@media (max-aspect-ratio: 16/9) {
+    .video-wrapper iframe {
+        width: 200vh; /* Increased from 177.78vh for better coverage */
+        height: 100vh;
+        transform: translate(-50%, -50%) scale(1.1);
+    }
 }
 
 .content-overlay {
@@ -134,17 +151,6 @@ body {
         max-width: 90%;
         margin: 0 auto;
     }
-
-    .video-wrapper {
-        height: 100vh;
-        width: 100vw;
-    }
-
-    .video-wrapper iframe {
-        width: 100vw;
-        height: 100vh;
-        transform: translate(-50%, -50%) scale(2.5);
-    }
 }
 
 /* Small Mobile Styles */
@@ -160,15 +166,11 @@ body {
     .content-title {
         font-size: 1.75rem;
     }
-
-    .video-wrapper iframe {
-        transform: translate(-50%, -50%) scale(3);
-    }
 }
 
-/* iPhone SE and similar small devices */
+/* Remove the iPhone SE specific transform since we're handling scaling in the aspect ratio queries */
 @media screen and (max-width: 380px) {
-    .video-wrapper iframe {
-        transform: translate(-50%, -50%) scale(3.5);
+    .header {
+        padding: 0.75rem;
     }
 }
