@@ -109,12 +109,26 @@ body {
     z-index: 3;
 }
 
+.brand {
+    pointer-events: auto;
+    max-width: 45%; /* Reduced from 60% */
+}
+
 .brand-title {
     font-size: 5rem;
     font-weight: 800;
     margin: 0;
     letter-spacing: 0.05em;
     line-height: 1;
+}
+
+.brand-text {
+    font-size: 1.2rem;
+    font-weight: 400;
+    margin: 0;
+    line-height: 1.4;
+    display: none;
+    max-width: 300px; /* Added explicit max-width */
 }
 
 .contact {
@@ -133,10 +147,6 @@ body {
     display: block;
 }
 
-.brand {
-    pointer-events: auto; /* Re-enable clicking for brand if needed */
-}
-
 /* Mobile Styles */
 @media screen and (max-width: 768px) {
     .bottom-content {
@@ -146,8 +156,18 @@ body {
         width: calc(100% - 3rem);
     }
 
+    .brand {
+        max-width: 50%; /* Reduced from 70% */
+    }
+
     .brand-title {
         font-size: 3rem;
+    }
+
+    .brand-text {
+        font-size: 1rem;
+        line-height: 1.3;
+        max-width: 250px;
     }
 
     .tagline-text {
@@ -169,8 +189,18 @@ body {
         width: calc(100% - 2rem);
     }
 
+    .brand {
+        max-width: 55%; /* Reduced from 75% */
+    }
+
     .brand-title {
         font-size: 2rem;
+    }
+
+    .brand-text {
+        font-size: 0.875rem;
+        line-height: 1.25;
+        max-width: 200px;
     }
 
     .tagline-text {
