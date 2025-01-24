@@ -15,10 +15,15 @@
       <div class="video-wrapper">
         <iframe src="https://player.vimeo.com/video/1049547489?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
       </div>
+      <!--<div class="video-wrapper">
+        <iframe src="https://player.vimeo.com/video/1049933393?h=0f18a56b36?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+      </div>-->
+      <!--<div class="video-wrapper">
+        <iframe src="https://player.vimeo.com/video/1050060609?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+      </div>-->
       <div class="video-wrapper">
         <iframe src="https://player.vimeo.com/video/1049556946?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
       </div>
-    </div>
   </div>
 
   <div class="content-overlay">
@@ -28,7 +33,8 @@
 
     <div class="bottom-content">
       <div class="brand">
-        <h1 class="brand-title">BAUM STUDIOS</h1>
+        <h1 class="brand-title" data-video="1">BAUM STUDIOS</h1>
+        <p class="brand-text" data-video="2">We are an architecture and urban design studio focused on creating innovative and sustainable spaces.</p>
       </div>
 
       <div class="contact">
@@ -37,5 +43,34 @@
       </div>
     </div>
   </div>
+
+  <!--<script src="js/script.js"></script>-->
+  <script src="https://player.vimeo.com/api/player.js"></script>
+  <script>
+    const scrollContainer = document.querySelector('.video-scroll-container');
+    const brandTitle = document.querySelector('.brand-title');
+    const brandText = document.querySelector('.brand-text');
+
+    // Enable horizontal scrolling with mouse wheel
+    scrollContainer.addEventListener('wheel', (e) => {
+        e.preventDefault();
+        scrollContainer.scrollLeft += e.deltaY;
+    });
+
+    // Handle text switching based on scroll position
+    scrollContainer.addEventListener('scroll', () => {
+        const scrollPosition = scrollContainer.scrollLeft;
+        const containerWidth = scrollContainer.clientWidth;
+        
+        // If we're more than halfway through the first video
+        if (scrollPosition > containerWidth / 2) {
+            brandTitle.style.display = 'none';
+            brandText.style.display = 'block';
+        } else {
+            brandTitle.style.display = 'block';
+            brandText.style.display = 'none';
+        }
+    });
+  </script>
 </body>
 </html>
