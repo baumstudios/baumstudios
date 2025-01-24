@@ -77,7 +77,6 @@ body {
     height: 100vh;
     display: flex;
     flex-direction: column;
-    background: rgba(0, 0, 0, 0.3);
     pointer-events: none;
 }
 
@@ -107,6 +106,7 @@ body {
     justify-content: space-between;
     align-items: flex-end;
     width: calc(100% - 4rem);
+    pointer-events: auto;
 }
 
 .brand-title {
@@ -121,7 +121,8 @@ body {
     text-align: right;
 }
 
-.contact-email {
+.contact-email,
+.contact-phone {
     font-size: 1rem;
     font-weight: 400;
     margin: 0;
@@ -131,24 +132,13 @@ body {
     display: block;
 }
 
-.contact-phone {
-    font-size: 1rem;
-    font-weight: 400;
-    margin: 0;
-    color: rgba(255, 255, 255, 0.9);
-    text-align: right;
-    text-decoration: none;
-}
-
 /* Mobile Styles */
 @media screen and (max-width: 768px) {
     .bottom-content {
-        position: fixed;
         bottom: 1.5rem;
         left: 1.5rem;
         right: 1.5rem;
         width: calc(100% - 3rem);
-        z-index: 3;
     }
 
     .brand-title {
@@ -168,7 +158,6 @@ body {
 /* Small Mobile Styles */
 @media screen and (max-width: 480px) {
     .bottom-content {
-        position: fixed;
         bottom: 1rem;
         left: 1rem;
         right: 1rem;
