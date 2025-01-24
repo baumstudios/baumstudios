@@ -45,8 +45,6 @@ body {
     left: 50%;
     width: 100vw;
     height: 100vh;
-    min-width: 177.77vh; /* 16:9 aspect ratio */
-    min-height: 56.25vw; /* 16:9 aspect ratio */
     transform: translate(-50%, -50%) scale(1.1);
     border: none;
     pointer-events: none;
@@ -137,9 +135,10 @@ body {
     }
 
     .video-wrapper iframe {
-        width: 100vw;
+        width: auto;
         height: 100vh;
-        transform: translate(-50%, -50%) scale(1.2); /* Slightly larger scale for mobile */
+        min-width: 100vw;
+        transform: translate(-50%, -50%) scale(1.5);
     }
 }
 
@@ -155,5 +154,9 @@ body {
 
     .content-title {
         font-size: 1.75rem;
+    }
+
+    .video-wrapper iframe {
+        transform: translate(-50%, -50%) scale(2);
     }
 }
