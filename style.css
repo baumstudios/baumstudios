@@ -1,6 +1,6 @@
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
+    font-family: 'Karla', Arial, sans-serif;
     color: white;
     overflow: hidden;
     width: 100vw;
@@ -81,96 +81,111 @@ body {
     pointer-events: none;
 }
 
-.header {
-    padding: 2rem;
-    background: transparent;
+.tagline {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-45deg);
 }
 
-.header-title {
-    font-size: 2rem;
-    font-weight: bold;
+.tagline-text {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: 400;
+    white-space: nowrap;
+    color: rgba(255, 255, 255, 0.9);
+    text-align: center;
+}
+
+.bottom-content {
+    position: absolute;
+    bottom: 2rem;
+    left: 2rem;
+    right: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    width: calc(100% - 4rem);
+}
+
+.brand-title {
+    font-size: 6rem;
+    font-weight: 800;
     margin: 0;
     letter-spacing: 0.1em;
 }
 
-.header-email {
-    color: rgba(255, 255, 255, 0.8);
+.contact-email {
     font-size: 1rem;
-    margin: 0.5rem 0 0 0;
+    font-weight: 400;
+    margin: 0;
+    color: rgba(255, 255, 255, 0.8);
+    text-align: right;
 }
-
-.content {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 2rem;
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-.content-title {
-    font-size: 3rem;
-    font-weight: bold;
-    margin-bottom: 1rem;
-}
-
-.content-description {
-    color: rgba(255, 255, 255, 0.9);
-    font-size: 1.2rem;
-    line-height: 1.6;
+.contact-phone {
+    font-size: 1rem;
+    font-weight: 400;
+    margin: 0;
+    color: rgba(255, 255, 255, 0.8);
+    text-align: right;
 }
 
 /* Mobile Styles */
 @media screen and (max-width: 768px) {
-    .header {
-        padding: 1.5rem;
+    .bottom-content {
+        bottom: 1.5rem;
+        left: 1.5rem;
+        right: 1.5rem;
+        width: calc(100% - 3rem);
     }
 
-    .header-title {
-        font-size: 1.5rem;
+    .brand-title {
+        font-size: 2rem;
     }
 
-    .header-email {
+    .contact-email {
+        font-size: 0.875rem;
+    }
+    .contact-phone {
         font-size: 0.875rem;
     }
 
-    .content {
-        padding: 1.5rem;
-        text-align: center;
-    }
-
-    .content-title {
-        font-size: 2rem;
-        margin-bottom: 0.75rem;
-    }
-
-    .content-description {
+    .tagline-text {
         font-size: 1rem;
-        line-height: 1.5;
-        max-width: 90%;
-        margin: 0 auto;
     }
 }
 
 /* Small Mobile Styles */
 @media screen and (max-width: 480px) {
-    .header {
-        padding: 1rem;
+    .bottom-content {
+        bottom: 1rem;
+        left: 1rem;
+        right: 1rem;
+        width: calc(100% - 2rem);
     }
 
-    .header-title {
+    .brand-title {
         font-size: 1.25rem;
     }
 
-    .content-title {
-        font-size: 1.75rem;
+    .contact-email {
+        font-size: 0.75rem;
+    }
+    .contact-phone {
+        font-size: 0.75rem;
+    }
+
+    .tagline-text {
+        font-size: 0.875rem;
     }
 }
 
-/* Remove the iPhone SE specific transform since we're handling scaling in the aspect ratio queries */
+/* Very Small Mobile Styles */
 @media screen and (max-width: 380px) {
-    .header {
-        padding: 0.75rem;
+    .bottom-content {
+        bottom: 0.75rem;
+        left: 0.75rem;
+        right: 0.75rem;
+        width: calc(100% - 1.5rem);
     }
 }
