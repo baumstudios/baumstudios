@@ -126,14 +126,18 @@ body {
     font-weight: 400;
     margin: 0;
     color: rgba(255, 255, 255, 0.9);
+    text-align: right;
+    text-decoration: none;
+    display: block;
 }
 
 .contact-phone {
     font-size: 1rem;
     font-weight: 400;
     margin: 0;
-    color: rgba(255, 255, 255, 0.8);
+    color: rgba(255, 255, 255, 0.9);
     text-align: right;
+    text-decoration: none;
 }
 
 /* Mobile Styles */
@@ -169,8 +173,6 @@ body {
         left: 1rem;
         right: 1rem;
         width: calc(100% - 2rem);
-        background: rgba(0, 0, 0, 0.3);
-        padding: 0.5rem;
     }
 
     .brand-title {
