@@ -77,6 +77,7 @@ body {
     height: 100vh;
     display: flex;
     flex-direction: column;
+    pointer-events: none; /* Allow clicks to pass through to video */
 }
 
 .tagline {
@@ -118,6 +119,7 @@ body {
 
 .contact {
     text-align: right;
+    pointer-events: auto; /* Re-enable clicking for contact links */
 }
 
 .contact-email,
@@ -129,6 +131,10 @@ body {
     text-align: right;
     text-decoration: none;
     display: block;
+}
+
+.brand {
+    pointer-events: auto; /* Re-enable clicking for brand if needed */
 }
 
 /* Mobile Styles */
