@@ -139,24 +139,23 @@ body {
 /* Mobile Styles */
 @media screen and (max-width: 768px) {
     .bottom-content {
+        position: fixed;
         bottom: 1.5rem;
         left: 1.5rem;
         right: 1.5rem;
         width: calc(100% - 3rem);
+        z-index: 3;
     }
 
     .brand-title {
-        font-size: 3.5rem;
+        font-size: 3rem;
     }
 
     .tagline-text {
         font-size: 1.2rem;
     }
 
-    .contact-email {
-        font-size: 0.875rem;
-    }
-
+    .contact-email,
     .contact-phone {
         font-size: 0.875rem;
     }
@@ -165,24 +164,24 @@ body {
 /* Small Mobile Styles */
 @media screen and (max-width: 480px) {
     .bottom-content {
+        position: fixed;
         bottom: 1rem;
         left: 1rem;
         right: 1rem;
         width: calc(100% - 2rem);
+        background: rgba(0, 0, 0, 0.3);
+        padding: 0.5rem;
     }
 
     .brand-title {
-        font-size: 2.5rem;
+        font-size: 2rem;
     }
 
     .tagline-text {
         font-size: 1rem;
     }
 
-    .contact-email {
-        font-size: 0.75rem;
-    }
-
+    .contact-email,
     .contact-phone {
         font-size: 0.75rem;
     }
