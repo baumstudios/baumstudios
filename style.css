@@ -178,6 +178,15 @@ body {
     .contact-phone {
         font-size: 0.875rem;
     }
+
+    .scroll-indicator {
+        right: 1.5rem;
+    }
+
+    .scroll-indicator svg {
+        width: 20px;
+        height: 20px;
+    }
 }
 
 /* Small Mobile Styles */
@@ -211,6 +220,15 @@ body {
     .contact-phone {
         font-size: 0.75rem;
     }
+
+    .scroll-indicator {
+        right: 1rem;
+    }
+
+    .scroll-indicator svg {
+        width: 16px;
+        height: 16px;
+    }
 }
 
 /* Very Small Mobile Styles */
@@ -221,4 +239,35 @@ body {
         right: 0.75rem;
         width: calc(100% - 1.5rem);
     }
+}
+
+.scroll-indicator {
+    position: fixed;
+    right: 2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 3;
+    opacity: 0;
+    animation: fadeInOut 3s ease-in-out;
+    animation-delay: 1s;
+    pointer-events: none;
+}
+
+.scroll-indicator svg {
+    animation: pulse 2s infinite;
+    width: 24px;
+    height: 24px;
+}
+
+@keyframes fadeInOut {
+    0% { opacity: 0; }
+    20% { opacity: 0.8; }
+    80% { opacity: 0.8; }
+    100% { opacity: 0; }
+}
+
+@keyframes pulse {
+    0% { transform: translateX(0); }
+    50% { transform: translateX(10px); }
+    100% { transform: translateX(0); }
 }
