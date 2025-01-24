@@ -45,6 +45,8 @@ body {
     left: 50%;
     width: 100vw;
     height: 100vh;
+    min-width: 177.77vh; /* 16:9 aspect ratio */
+    min-height: 56.25vw; /* 16:9 aspect ratio */
     transform: translate(-50%, -50%) scale(1.1);
     border: none;
     pointer-events: none;
@@ -132,6 +134,12 @@ body {
         line-height: 1.5;
         max-width: 90%;
         margin: 0 auto;
+    }
+
+    .video-wrapper iframe {
+        width: 100vw;
+        height: 100vh;
+        transform: translate(-50%, -50%) scale(1.2); /* Slightly larger scale for mobile */
     }
 }
 
