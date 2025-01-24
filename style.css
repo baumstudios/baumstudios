@@ -77,7 +77,6 @@ body {
     height: 100vh;
     display: flex;
     flex-direction: column;
-    pointer-events: none;
 }
 
 .tagline {
@@ -98,7 +97,7 @@ body {
 }
 
 .bottom-content {
-    position: absolute;
+    position: fixed;
     bottom: 2rem;
     left: 2rem;
     right: 2rem;
@@ -106,7 +105,7 @@ body {
     justify-content: space-between;
     align-items: flex-end;
     width: calc(100% - 4rem);
-    pointer-events: auto;
+    z-index: 3;
 }
 
 .brand-title {
