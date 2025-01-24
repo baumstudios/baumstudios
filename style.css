@@ -86,15 +86,16 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%) rotate(-45deg);
+    width: 100%;
+    text-align: center;
 }
 
 .tagline-text {
     margin: 0;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     font-weight: 400;
     white-space: nowrap;
     color: rgba(255, 255, 255, 0.9);
-    text-align: center;
 }
 
 .bottom-content {
@@ -109,19 +110,24 @@ body {
 }
 
 .brand-title {
-    font-size: 6rem;
+    font-size: 5rem;
     font-weight: 800;
     margin: 0;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.05em;
+    line-height: 1;
+}
+
+.contact {
+    text-align: right;
 }
 
 .contact-email {
     font-size: 1rem;
     font-weight: 400;
     margin: 0;
-    color: rgba(255, 255, 255, 0.8);
-    text-align: right;
+    color: rgba(255, 255, 255, 0.9);
 }
+
 .contact-phone {
     font-size: 1rem;
     font-weight: 400;
@@ -140,18 +146,19 @@ body {
     }
 
     .brand-title {
-        font-size: 2rem;
+        font-size: 3.5rem;
+    }
+
+    .tagline-text {
+        font-size: 1.2rem;
     }
 
     .contact-email {
         font-size: 0.875rem;
     }
+
     .contact-phone {
         font-size: 0.875rem;
-    }
-
-    .tagline-text {
-        font-size: 1rem;
     }
 }
 
@@ -165,18 +172,19 @@ body {
     }
 
     .brand-title {
-        font-size: 1.25rem;
+        font-size: 2.5rem;
+    }
+
+    .tagline-text {
+        font-size: 1rem;
     }
 
     .contact-email {
         font-size: 0.75rem;
     }
+
     .contact-phone {
         font-size: 0.75rem;
-    }
-
-    .tagline-text {
-        font-size: 0.875rem;
     }
 }
 
