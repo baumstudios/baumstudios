@@ -50,21 +50,22 @@ body {
     min-height: 100%;
     width: auto;
     height: auto;
+    object-fit: cover;
 }
 
 @media (min-aspect-ratio: 16/9) {
     .video-wrapper iframe {
         width: 100vw;
-        height: 56.25vw; /* height: 100 * (9/16) = 56.25 */
-        transform: translate(-50%, -50%) scale(1.1);
+        height: 56.25vw;
+        transform: translate(-50%, -50%) scale(1.5);
     }
 }
 
 @media (max-aspect-ratio: 16/9) {
     .video-wrapper iframe {
-        width: 200vh; /* Increased from 177.78vh for better coverage */
+        width: 177.78vh;
         height: 100vh;
-        transform: translate(-50%, -50%) scale(1.1);
+        transform: translate(-50%, -50%) scale(1.5);
     }
 }
 
