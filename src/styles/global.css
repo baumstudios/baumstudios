@@ -112,15 +112,15 @@ body {
 
 .brand {
     pointer-events: auto;
-    max-width: 45%; /* Reduced from 60% */
+    max-width: 60%; /* Increased to accommodate longer title */
 }
 
 .brand-title {
-    font-size: 5rem;
+    font-size: 2.5rem; /* Reduced to fit longer text */
     font-weight: 800;
     margin: 0;
-    letter-spacing: 0.05em;
-    line-height: 1;
+    letter-spacing: 0.02em;
+    line-height: 1.2;
 }
 
 .brand-text {
@@ -158,11 +158,11 @@ body {
     }
 
     .brand {
-        max-width: 50%; /* Reduced from 70% */
+        max-width: 65%; /* Adjusted for longer title */
     }
 
     .brand-title {
-        font-size: 3rem;
+        font-size: 1.5rem; /* Adjusted for longer text */
     }
 
     .brand-text {
@@ -200,11 +200,11 @@ body {
     }
 
     .brand {
-        max-width: 55%; /* Reduced from 75% */
+        max-width: 70%; /* Adjusted for longer title */
     }
 
     .brand-title {
-        font-size: 2rem;
+        font-size: 1.2rem; /* Adjusted for longer text */
     }
 
     .brand-text {
