@@ -1,0 +1,151 @@
+---
+import { languages, getLangFromUrl } from '../i18n/utils';
+import en from '../i18n/en.json';
+import hr from '../i18n/hr.json';
+
+const currentLang = getLangFromUrl(Astro.url);
+
+// Pass translations to client-side JavaScript
+const translations = { en, hr };
+---
+
+<div class="language-switcher">
+  {Object.entries(languages).map(([lang, label]) => (
+    <button 
+      data-lang={lang}
+      class={`lang-link ${currentLang === lang ? 'active' : ''}`}
+      aria-current={currentLang === lang ? 'page' : undefined}
+    >
+      {label}
+    </button>
+  ))}
+</div>
+
+<script define:vars={{ translations, currentLang }}>
+  // Wait for DOM to be ready
+  document.addEventListener('DOMContentLoaded', () => {
+    // Store current language
+    let activeLang = currentLang;
+    
+    // Function to update all text content
+    function updateLanguage(lang) {
+      const t = translations[lang];
+      
+      // Re-query elements each time to ensure they exist
+      const elements = {
+        tagline: document.querySelector('.tagline-text'),
+        brandTitle: document.querySelector('.brand-title'),
+        brandText: document.querySelector('.brand-text'),
+        contactEmail: document.querySelector('.contact-email'),
+        contactPhone: document.querySelector('.contact-phone'),
+        pageTitle: document.querySelector('title'),
+        metaDescription: document.querySelector('meta[name="description"]'),
+        metaKeywords: document.querySelector('meta[name="keywords"]'),
+        htmlLang: document.documentElement
+      };
+      
+      // Update visible text
+      if (elements.tagline) {
+        elements.tagline.textContent = t.site.tagline;
+      }
+      if (elements.brandTitle) {
+        elements.brandTitle.textContent = t.site.brandTitle;
+      }
+      if (elements.brandText) {
+        elements.brandText.textContent = t.site.brandText;
+      }
+      if (elements.contactEmail) {
+        elements.contactEmail.textContent = t.site.contactEmail;
+        elements.contactEmail.href = `mailto:${t.site.contactEmail}`;
+      }
+      if (elements.contactPhone) {
+        elements.contactPhone.textContent = t.site.contactPhone;
+      }
+      
+      // Update meta tags
+      if (elements.pageTitle) elements.pageTitle.textContent = t.meta.title;
+      if (elements.metaDescription) elements.metaDescription.content = t.meta.description;
+      if (elements.metaKeywords) elements.metaKeywords.content = t.meta.keywords;
+      if (elements.htmlLang) elements.htmlLang.lang = lang;
+      
+      // Update active button
+      document.querySelectorAll('.lang-link').forEach(btn => {
+        if (btn.dataset.lang === lang) {
+          btn.classList.add('active');
+        } else {
+          btn.classList.remove('active');
+        }
+      });
+      
+      // Update URL without reload
+      const newPath = lang === 'en' ? '/' : `/hr/`;
+      window.history.pushState({}, '', newPath);
+      
+      // Store preference
+      localStorage.setItem('preferredLang', lang);
+      activeLang = lang;
+    }
+
+    // Add click handlers to language buttons
+    document.querySelectorAll('.lang-link').forEach(button => {
+      button.addEventListener('click', (e) => {
+        e.preventDefault();
+        const newLang = e.currentTarget.dataset.lang;
+        if (newLang !== activeLang) {
+          updateLanguage(newLang);
+        }
+      });
+    });
+
+    // Check for stored language preference on load
+    const storedLang = localStorage.getItem('preferredLang');
+    if (storedLang && storedLang !== activeLang && translations[storedLang]) {
+      // Small delay to ensure DOM is fully ready
+      setTimeout(() => updateLanguage(storedLang), 100);
+    }
+  });
+</script>
+
+<style>
+  .language-switcher {
+    position: fixed;
+    top: 2rem;
+    right: 2rem;
+    z-index: 10;
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .lang-link {
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 400;
+    transition: color 0.3s ease;
+    font-family: 'Karla', Arial, sans-serif;
+    cursor: pointer;
+    padding: 0;
+  }
+  
+  .lang-link:hover {
+    color: rgba(255, 255, 255, 1);
+  }
+  
+  .lang-link.active {
+    color: rgba(255, 255, 255, 1);
+    font-weight: 800;
+  }
+  
+  @media screen and (max-width: 768px) {
+    .language-switcher {
+      top: 1.5rem;
+      right: 1.5rem;
+    }
+    
+    .lang-link {
+      font-size: 0.8rem;
+    }
+  }
+</style>

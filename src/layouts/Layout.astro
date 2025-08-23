@@ -1,19 +1,26 @@
 ---
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
 export interface Props {
   title?: string;
   description?: string;
   keywords?: string;
 }
 
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
 const { 
-  title = 'Baum Studios — between architecture and urban matters',
-  description = 'Baum Studios is a spatial practice founded by Sara Blekić focusing on architecture and urbanism. The studio collaborates with a variety of spatial and non-spatial practitioners, engaging in projects across multiple scales.',
-  keywords = 'architect, urbanist, architecture, urbanism, spatial design, spatial practice, Sara Blekić, Zagreb, Croatia'
+  title = t.meta.title,
+  description = t.meta.description,
+  keywords = t.meta.keywords
 } = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://baumstudios.com');
 ---
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang={lang}>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,6 +28,10 @@ const {
   <meta name="keywords" content={keywords}>
   <meta name="description" content={description}>
   <title>{title}</title>
+  <link rel="canonical" href={canonicalURL} />
+  <link rel="alternate" hreflang="en" href="https://baumstudios.com/" />
+  <link rel="alternate" hreflang="hr" href="https://baumstudios.com/hr/" />
+  <link rel="alternate" hreflang="x-default" href="https://baumstudios.com/" />
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
