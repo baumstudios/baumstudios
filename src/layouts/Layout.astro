@@ -143,14 +143,12 @@ const ogImageURL = new URL('/og-image.jpg', Astro.site || 'https://baumstudios.c
         "name": "Baum Studios",
         "description": "Architecture and Urban Design Practice in Zagreb",
         "publisher": {
-          "@id": "https://baumstudios.com/#organization"
+          "@type": "Organization",
+          "name": "Baum Studios",
+          "url": "https://baumstudios.com",
+          "logo": "https://baumstudios.com/og-image.jpg"
         },
-        "inLanguage": ["en", "hr"],
-        "potentialAction": {
-          "@type": "SearchAction",
-          "target": "https://baumstudios.com/?s={search_term_string}",
-          "query-input": "required name=search_term_string"
-        }
+        "inLanguage": ["en", "hr"]
       },
       {
         "@type": "ProfessionalService",
@@ -166,7 +164,8 @@ const ogImageURL = new URL('/og-image.jpg', Astro.site || 'https://baumstudios.c
           "Construction Documentation"
         ],
         "provider": {
-          "@id": "https://baumstudios.com/#organization"
+          "@type": "Organization",
+          "name": "Baum Studios"
         },
         "areaServed": {
           "@type": "Country",
