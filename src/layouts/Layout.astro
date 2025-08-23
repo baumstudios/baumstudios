@@ -55,6 +55,10 @@ const ogImageURL = new URL('/og-image.jpg', Astro.site || 'https://baumstudios.c
   <!-- Additional Meta Tags -->
   <meta name="author" content="Sara Blekić" />
   <meta name="generator" content={Astro.generator} />
+  <meta name="geo.region" content="HR" />
+  <meta name="geo.placename" content="Zagreb" />
+  <meta name="geo.position" content="45.8150;15.9819" />
+  <meta name="ICBM" content="45.8150, 15.9819" />
   
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -65,6 +69,152 @@ const ogImageURL = new URL('/og-image.jpg', Astro.site || 'https://baumstudios.c
 </head>
 <body>
   <slot />
+  
+  <!-- Schema.org Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "ArchitecturalFirm",
+        "@id": "https://baumstudios.com/#organization",
+        "name": "Baum Studios",
+        "alternateName": "Baum Studios Architecture",
+        "url": "https://baumstudios.com",
+        "logo": "https://baumstudios.com/og-image.jpg",
+        "image": "https://baumstudios.com/og-image.jpg",
+        "description": "Baum Studios is a spatial practice founded by Sara Blekić in Zagreb, Croatia, focusing on architecture and urbanism. The studio collaborates with various spatial and non-spatial practitioners on projects across multiple scales.",
+        "founder": {
+          "@type": "Person",
+          "name": "Sara Blekić",
+          "jobTitle": "Founder & Principal Architect"
+        },
+        "foundingDate": "2023",
+        "foundingLocation": {
+          "@type": "Place",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Zagreb",
+            "addressCountry": "HR"
+          }
+        },
+        "areaServed": [
+          {
+            "@type": "City",
+            "name": "Zagreb"
+          },
+          {
+            "@type": "Country",
+            "name": "Croatia"
+          }
+        ],
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "+385-98-902-7051",
+          "email": "info@baumstudios.com",
+          "contactType": "customer service",
+          "availableLanguage": ["en", "hr"]
+        },
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Zagreb",
+          "addressRegion": "Zagreb",
+          "addressCountry": "HR"
+        },
+        "sameAs": [
+          "https://www.instagram.com/baumstudios",
+          "https://www.linkedin.com/company/baumstudios"
+        ],
+        "knowsAbout": [
+          "Architecture",
+          "Urban Design",
+          "Urban Planning",
+          "Spatial Design",
+          "Architectural Design",
+          "Sustainable Architecture",
+          "Contemporary Architecture"
+        ],
+        "slogan": "between architecture and urban matters"
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://baumstudios.com/#website",
+        "url": "https://baumstudios.com",
+        "name": "Baum Studios",
+        "description": "Architecture and Urban Design Practice in Zagreb",
+        "publisher": {
+          "@id": "https://baumstudios.com/#organization"
+        },
+        "inLanguage": ["en", "hr"],
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://baumstudios.com/?s={search_term_string}",
+          "query-input": "required name=search_term_string"
+        }
+      },
+      {
+        "@type": "ProfessionalService",
+        "@id": "https://baumstudios.com/#service",
+        "name": "Baum Studios Architectural Services",
+        "serviceType": [
+          "Architectural Design",
+          "Urban Planning",
+          "Spatial Design",
+          "Design Consultation",
+          "Project Development",
+          "Conceptual Design",
+          "Construction Documentation"
+        ],
+        "provider": {
+          "@id": "https://baumstudios.com/#organization"
+        },
+        "areaServed": {
+          "@type": "Country",
+          "name": "Croatia"
+        },
+        "availableLanguage": ["en", "hr"],
+        "priceRange": "$$$"
+      },
+      {
+        "@type": "LocalBusiness",
+        "@id": "https://baumstudios.com/#localbusiness",
+        "name": "Baum Studios",
+        "image": "https://baumstudios.com/og-image.jpg",
+        "telephone": "+385989027051",
+        "email": "info@baumstudios.com",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "",
+          "addressLocality": "Zagreb",
+          "addressRegion": "Zagreb",
+          "postalCode": "10000",
+          "addressCountry": "HR"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 45.8150,
+          "longitude": 15.9819
+        },
+        "url": "https://baumstudios.com",
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": [
+              "Monday",
+              "Tuesday",
+              "Wednesday",
+              "Thursday",
+              "Friday"
+            ],
+            "opens": "09:00",
+            "closes": "17:00"
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+  
   <script src="https://player.vimeo.com/api/player.js"></script>
 </body>
 </html>
