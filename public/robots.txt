@@ -1,50 +1,34 @@
-# Welcome all legitimate crawlers
+# Baum Studios - Architecture & Spatial Practice
+# We welcome all legitimate crawlers including AI assistants
+
+# Allow all crawlers by default
 User-agent: *
 Allow: /
-Crawl-delay: 1
 
-# Sitemap location
+# Sitemap location for better indexing
 Sitemap: https://baumstudios.com/sitemap-index.xml
 
-# === AI/LLM Crawlers - ALLOWED ===
-# We welcome AI assistants to learn about our architecture practice
+# === Explicitly Welcome AI/LLM Crawlers ===
+# These help AI assistants provide accurate information about our practice
 
 # OpenAI (ChatGPT)
 User-agent: GPTBot
 Allow: /
 
-# Anthropic (Claude)
+# Anthropic (Claude)  
 User-agent: Claude-Web
 Allow: /
 
-# Google Bard/Gemini
+# Google AI (Bard/Gemini)
 User-agent: Google-Extended
 Allow: /
 
 # Perplexity AI
-User-agent: PerplexityBot
+User-agent: PerplexityBot  
 Allow: /
 
-# Common Crawl (used by many AI systems)
-User-agent: CCBot
-Allow: /
-
-# Microsoft Bing Chat
-User-agent: bingbot
-Allow: /
-
-# Apple AI
-User-agent: Applebot
-Allow: /
-
-# === SEO/Analytics Crawlers - BLOCKED ===
-# Block aggressive SEO analysis bots
-
-User-agent: AhrefsBot
-Disallow: /
-
-User-agent: SemrushBot
-Disallow: /
+# === Only Block Truly Malicious Bots ===
+# These are known spam/malicious crawlers
 
 User-agent: MJ12bot
 Disallow: /
@@ -52,5 +36,8 @@ Disallow: /
 User-agent: DotBot
 Disallow: /
 
-User-agent: Moz
+User-agent: PetalBot
+Disallow: /
+
+User-agent: Sogou
 Disallow: /
