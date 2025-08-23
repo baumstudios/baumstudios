@@ -14,13 +14,15 @@ const { videos } = Astro.props;
     {videos.map((video, index) => (
       <div class="video-wrapper">
         <iframe 
-          src={`https://player.vimeo.com/video/${video.id}?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1`}
+          src={`https://player.vimeo.com/video/${video.id}?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1&quality=auto`}
           loading={index === 0 ? "eager" : "lazy"}
           title={video.title}
           aria-label={video.title}
           frameborder="0"
-          allow="autoplay; fullscreen"
+          allow="autoplay; fullscreen; picture-in-picture"
           allowfullscreen
+          webkitallowfullscreen
+          mozallowfullscreen
         ></iframe>
       </div>
     ))}
