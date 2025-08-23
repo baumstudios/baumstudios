@@ -22,13 +22,13 @@
         <iframe src="https://player.vimeo.com/video/1049547489?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
       </div>
       <div class="video-wrapper">
-        <iframe src="https://player.vimeo.com/video/1049933393?h=0f18a56b36&background=1&autoplay=1&loop=1&byline=0&title=0&muted=1" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+        <iframe data-src="https://player.vimeo.com/video/1049933393?h=0f18a56b36&background=1&autoplay=1&loop=1&byline=0&title=0&muted=1" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
       </div>
       <div class="video-wrapper">
-        <iframe src="https://player.vimeo.com/video/1049556946?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+        <iframe data-src="https://player.vimeo.com/video/1049556946?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
       </div>
       <div class="video-wrapper">
-        <iframe src="https://player.vimeo.com/video/1050060609?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+        <iframe data-src="https://player.vimeo.com/video/1050060609?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
       </div>
   </div>
 
@@ -62,6 +62,29 @@
     const scrollContainer = document.querySelector('.video-scroll-container');
     const brandTitle = document.querySelector('.brand-title');
     const brandText = document.querySelector('.brand-text');
+
+    // Progressive video preloading
+    function preloadVideos() {
+        const iframes = document.querySelectorAll('iframe[data-src]');
+        let delay = 2000; // Start loading second video after 2 seconds
+        
+        iframes.forEach((iframe, index) => {
+            setTimeout(() => {
+                if (!iframe.src && iframe.dataset.src) {
+                    iframe.src = iframe.dataset.src;
+                }
+            }, delay);
+            delay += 1500; // Add 1.5 seconds between each subsequent video
+        });
+    }
+
+    // Start preloading videos after page load
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', preloadVideos);
+    } else {
+        // DOM is already loaded, start preloading
+        preloadVideos();
+    }
 
     // Enable horizontal scrolling with mouse wheel
     scrollContainer.addEventListener('wheel', (e) => {
