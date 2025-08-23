@@ -1,5 +1,6 @@
 ---
 import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import criticalCSS from '../styles/critical.css?raw';
 
 export interface Props {
   title?: string;
@@ -23,12 +24,16 @@ const ogImageURL = new URL('/og-image.jpg', Astro.site || 'https://baumstudios.c
 <!DOCTYPE html>
 <html lang={lang}>
 <head>
-  <!-- Google Tag Manager -->
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-TVZMD5N9');</script>
+  <!-- Google Tag Manager (defer for better performance) -->
+  <script defer>
+    window.addEventListener('load', function() {
+      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-TVZMD5N9');
+    });
+  </script>
   <!-- End Google Tag Manager -->
   
   <meta charset="UTF-8">
@@ -68,9 +73,11 @@ const ogImageURL = new URL('/og-image.jpg', Astro.site || 'https://baumstudios.c
   <meta name="geo.position" content="45.8150;15.9819" />
   <meta name="ICBM" content="45.8150, 15.9819" />
   
+  <!-- Favicon - only load essential one initially -->
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <!-- Defer other favicon sizes -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" media="(min-width: 0px)">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" media="(min-width: 0px)">
   
   <!-- Resource Hints for Performance -->
   <link rel="dns-prefetch" href="https://player.vimeo.com">
@@ -80,9 +87,14 @@ const ogImageURL = new URL('/og-image.jpg', Astro.site || 'https://baumstudios.c
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://player.vimeo.com">
   
-  <!-- Preload Critical Font -->
+  <!-- Optimized Font Loading -->
   <link rel="preload" href="https://fonts.gstatic.com/s/karla/v31/qkBKXvYC6trAT7RbLtyG5Q.woff2" as="font" type="font/woff2" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Karla:wght@400;800&display=swap" rel="stylesheet">
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Karla:wght@400;800&display=swap" as="style">
+  <link href="https://fonts.googleapis.com/css2?family=Karla:wght@400;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Karla:wght@400;800&display=swap" rel="stylesheet"></noscript>
+  
+  <!-- Inline Critical CSS -->
+  <style set:html={criticalCSS}></style>
 </head>
 <body>
   <!-- Google Tag Manager (noscript) -->
@@ -236,10 +248,12 @@ const ogImageURL = new URL('/og-image.jpg', Astro.site || 'https://baumstudios.c
   }
   </script>
   
-  <script src="https://player.vimeo.com/api/player.js"></script>
+  <script defer src="https://player.vimeo.com/api/player.js"></script>
 </body>
 </html>
 
+<!-- Defer non-critical styles -->
 <style is:global>
+  /* Load non-critical styles after page load */
   @import '../styles/global.css';
 </style>

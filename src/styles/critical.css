@@ -1,0 +1,179 @@
+/* Critical CSS - Above the fold styles only */
+body {
+    margin: 0;
+    font-family: 'Karla', Arial, sans-serif;
+    color: white;
+    overflow: hidden;
+    width: 100vw;
+    height: 100vh;
+}
+
+/* Fallback font while Karla loads */
+body {
+    font-family: 'Karla', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.video-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 1;
+}
+
+.video-scroll-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.video-scroll-container::-webkit-scrollbar {
+    display: none;
+}
+
+.video-wrapper {
+    position: relative;
+    flex: 0 0 100%;
+    width: 100vw;
+    height: 100vh;
+    scroll-snap-align: start;
+    overflow: hidden;
+}
+
+.video-wrapper iframe {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: cover;
+}
+
+.content-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    pointer-events: none;
+}
+
+.bottom-content {
+    position: fixed;
+    bottom: 2rem;
+    left: 2rem;
+    right: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    width: calc(100% - 4rem);
+    z-index: 3;
+}
+
+.brand {
+    pointer-events: auto;
+    max-width: 60%;
+}
+
+.brand-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin: 0;
+    letter-spacing: 0.02em;
+    line-height: 1.2;
+}
+
+.brand-text {
+    font-size: 1.2rem;
+    font-weight: 400;
+    margin: 0;
+    line-height: 1.4;
+    display: none;
+    max-width: 300px;
+}
+
+.contact {
+    text-align: right;
+    pointer-events: auto;
+}
+
+.contact-email,
+.contact-phone {
+    font-size: 1rem;
+    font-weight: 400;
+    margin: 0;
+    color: rgba(255, 255, 255, 0.9);
+    text-align: right;
+    text-decoration: none;
+    display: block;
+}
+
+/* Language Switcher - Critical Styles */
+.language-switcher {
+    position: fixed;
+    top: 2rem;
+    right: 2rem;
+    z-index: 10;
+    display: flex;
+    gap: 0.5rem;
+}
+
+.language-switcher a {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 400;
+    transition: color 0.2s;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.language-switcher a:hover {
+    color: rgba(255, 255, 255, 1);
+}
+
+.language-switcher a.active {
+    color: rgba(255, 255, 255, 1);
+    pointer-events: none;
+}
+
+.language-switcher span {
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 0.875rem;
+}
+
+/* Mobile critical styles */
+@media screen and (max-width: 768px) {
+    .bottom-content {
+        bottom: 1.5rem;
+        left: 1.5rem;
+        right: 1.5rem;
+        width: calc(100% - 3rem);
+    }
+    
+    .brand {
+        max-width: 65%;
+    }
+    
+    .brand-title {
+        font-size: 1.5rem;
+    }
+    
+    .language-switcher {
+        top: 1.5rem;
+        right: 1.5rem;
+    }
+}
