@@ -1,0 +1,15 @@
+{
+  "name": "baumstudios",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Baum Studios - Architecture and Urban Design Practice",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "astro": "^4.16.18"
+  }
+}

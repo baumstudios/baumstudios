@@ -1,0 +1,73 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout>
+  <div class="video-background">
+    <div class="video-scroll-container">
+      <div class="video-wrapper">
+        <iframe src="https://player.vimeo.com/video/1049547489?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+      </div>
+      <div class="video-wrapper">
+        <iframe src="https://player.vimeo.com/video/1049933393?h=0f18a56b36&background=1&autoplay=1&loop=1&byline=0&title=0&muted=1" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+      </div>
+      <div class="video-wrapper">
+        <iframe src="https://player.vimeo.com/video/1049556946?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+      </div>
+      <div class="video-wrapper">
+        <iframe src="https://player.vimeo.com/video/1050060609?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-overlay">
+    <div class="scroll-indicator">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M9 6L15 12L9 18" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+
+    <div class="tagline">
+      <p class="tagline-text">between architecture and urban matters</p>
+    </div>
+
+    <div class="bottom-content">
+      <div class="brand">
+        <h1 class="brand-title" data-video="1">Baum Studios</h1>
+        <p class="brand-text" data-video="2">Baum Studios is a spatial practice—founded in Zagreb (2023)(HR) by Sara Blekić. The studio collaborates with a variety of spatial and non-spatial practitioners, engaging in projects across multiple scales.</p>
+      </div>
+
+      <div class="contact">
+        <a href="mailto:info@baumstudios.com" class="contact-email">info@baumstudios.com</a>
+        <a href="tel:+385989027051" class="contact-phone">+385 (0) 98 902 70 51</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const scrollContainer = document.querySelector('.video-scroll-container');
+    const brandTitle = document.querySelector('.brand-title');
+    const brandText = document.querySelector('.brand-text');
+
+    // Enable horizontal scrolling with mouse wheel
+    scrollContainer.addEventListener('wheel', (e) => {
+        e.preventDefault();
+        scrollContainer.scrollLeft += e.deltaY;
+    });
+
+    // Handle text switching based on scroll position
+    scrollContainer.addEventListener('scroll', () => {
+        const scrollPosition = scrollContainer.scrollLeft;
+        const containerWidth = scrollContainer.clientWidth;
+        
+        // If we're more than halfway through the first video
+        if (scrollPosition > containerWidth / 2) {
+            brandTitle.style.display = 'none';
+            brandText.style.display = 'block';
+        } else {
+            brandTitle.style.display = 'block';
+            brandText.style.display = 'none';
+        }
+    });
+  </script>
+</Layout>
