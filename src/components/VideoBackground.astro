@@ -1,0 +1,64 @@
+---
+interface Props {
+  videos: {
+    id: string;
+    title: string;
+  }[];
+}
+
+const { videos } = Astro.props;
+---
+
+<div class="video-background">
+  <div class="video-scroll-container">
+    {videos.map((video, index) => (
+      <div class="video-wrapper">
+        <iframe 
+          src={`https://player.vimeo.com/video/${video.id}?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1`}
+          loading={index === 0 ? "eager" : "lazy"}
+          title={video.title}
+          aria-label={video.title}
+          frameborder="0"
+          allow="autoplay; fullscreen"
+          allowfullscreen
+        ></iframe>
+      </div>
+    ))}
+  </div>
+</div>
+
+<script>
+  // Intersection Observer for truly lazy loading videos beyond the first
+  const videoWrappers = document.querySelectorAll('.video-wrapper');
+  
+  const lazyLoadVideo = (entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const iframe = entry.target.querySelector('iframe');
+        if (iframe && iframe.dataset.src && !iframe.src) {
+          iframe.src = iframe.dataset.src;
+          observer.unobserve(entry.target);
+        }
+      }
+    });
+  };
+
+  // Only observe videos after the first one
+  if ('IntersectionObserver' in window && videoWrappers.length > 1) {
+    const observer = new IntersectionObserver(lazyLoadVideo, {
+      rootMargin: '100px'
+    });
+    
+    videoWrappers.forEach((wrapper, index) => {
+      if (index > 0) {
+        const iframe = wrapper.querySelector('iframe');
+        if (iframe && iframe.src) {
+          // Store the src and remove it for lazy loading
+          iframe.dataset.src = iframe.src;
+          iframe.removeAttribute('src');
+          observer.observe(wrapper);
+        }
+      }
+    });
+  }
+</script>
