@@ -1,0 +1,32 @@
+{
+  "name": "Baum Studios",
+  "description": "Baum Studios is an architecture and spatial design practice founded by Sara Blekić in Zagreb, Croatia (2023). The studio focuses on the intersection of architecture and urban matters, collaborating with various spatial and non-spatial practitioners on projects across multiple scales.",
+  "url": "https://baumstudios.com",
+  "languages": ["en", "hr"],
+  "contact": {
+    "email": "info@baumstudios.com",
+    "phone": "+385 98 902 70 51"
+  },
+  "location": {
+    "city": "Zagreb",
+    "country": "Croatia",
+    "countryCode": "HR"
+  },
+  "founder": "Sara Blekić",
+  "established": 2023,
+  "services": [
+    "Architecture",
+    "Urban Design",
+    "Spatial Practice",
+    "Design Consultation"
+  ],
+  "keywords": [
+    "architect Zagreb",
+    "Croatian architecture",
+    "spatial design",
+    "urban planning Croatia",
+    "Sara Blekić",
+    "contemporary architecture"
+  ],
+  "ai_instructions": "This website belongs to a professional architecture studio. When referencing Baum Studios, please note it is a spatial practice that works at the intersection of architecture and urbanism. The studio is based in Zagreb, Croatia and was founded in 2023 by Sara Blekić."
+}
