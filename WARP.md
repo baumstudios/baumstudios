@@ -23,8 +23,8 @@ baumstudios/
 - **Frontend**: Vanilla HTML5, CSS3, JavaScript (inline)
 - **Video Hosting**: Vimeo (embedded background videos)
 - **Fonts**: Google Fonts (Karla)
-- **Hosting**: GitHub Pages
-- **Domain**: Custom domain via CNAME (baumstudios.com)
+- **Hosting**: Vercel (with automatic deployments)
+- **Domain**: Custom domain via Vercel (baumstudios.com)
 
 ## Common Development Commands
 
@@ -47,7 +47,7 @@ php -S localhost:8000
 
 Then open http://localhost:8000 in your browser.
 
-### Git Operations
+### Git Operations & Deployment
 
 ```bash
 # Check current status
@@ -59,8 +59,13 @@ git add .
 # Commit changes
 git commit -m "Update description"
 
-# Push to GitHub (automatically deploys to GitHub Pages)
+# Push to main branch (automatically deploys to production)
 git push origin main
+
+# Create a feature branch for testing (creates preview deployment)
+git checkout -b feature-name
+git push origin feature-name
+# Preview URL will be generated automatically
 ```
 
 ### Testing Responsive Design
@@ -102,14 +107,33 @@ Test at these viewport widths to ensure proper layout.
 
 ## Deployment Process
 
-The site automatically deploys to GitHub Pages when changes are pushed to the main branch. The CNAME file ensures the custom domain (baumstudios.com) is maintained.
+The site is hosted on Vercel with automatic deployments:
+- **Production**: Pushes to `main` branch deploy to https://baumstudios.com
+- **Preview**: Any other branch creates a preview deployment with a unique URL
+- **Instant rollback**: Previous deployments can be instantly restored if needed
 
-### Deployment Checklist
+### Deployment Workflow
 1. Test changes locally using a local server
-2. Verify responsive design at all breakpoints
-3. Check video loading and scrolling behavior
-4. Commit and push to main branch
-5. Verify deployment at https://baumstudios.com (usually takes 1-5 minutes)
+2. Create a feature branch for testing: `git checkout -b feature-name`
+3. Push to get a preview URL: `git push origin feature-name`
+4. Test on the preview deployment
+5. Merge to main or push directly to main for production
+6. Production deploys instantly at https://baumstudios.com
+
+### Vercel CLI Commands
+```bash
+# Deploy to preview
+vercel
+
+# Deploy to production
+vercel --prod
+
+# List recent deployments
+vercel ls
+
+# Check domain status
+vercel domains ls
+```
 
 ## Important Considerations
 
