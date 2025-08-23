@@ -14,8 +14,8 @@ const { videos } = Astro.props;
     {videos.map((video, index) => (
       <div class="video-wrapper">
         <iframe 
-          src={`https://player.vimeo.com/video/${video.id}?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1&quality=auto`}
-          loading={index === 0 ? "eager" : "lazy"}
+          src={`https://player.vimeo.com/video/${video.id}?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1`}
+          loading={index <= 1 ? "eager" : "lazy"}
           title={video.title}
           aria-label={video.title}
           frameborder="0"
@@ -45,14 +45,14 @@ const { videos } = Astro.props;
     });
   };
 
-  // Only observe videos after the first one
-  if ('IntersectionObserver' in window && videoWrappers.length > 1) {
+  // Only observe videos after the first two
+  if ('IntersectionObserver' in window && videoWrappers.length > 2) {
     const observer = new IntersectionObserver(lazyLoadVideo, {
       rootMargin: '100px'
     });
     
     videoWrappers.forEach((wrapper, index) => {
-      if (index > 0) {
+      if (index > 1) {  // Skip first two videos
         const iframe = wrapper.querySelector('iframe');
         if (iframe && iframe.src) {
           // Store the src and remove it for lazy loading
