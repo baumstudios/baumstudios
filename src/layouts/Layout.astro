@@ -103,7 +103,7 @@ const ogImageURL = new URL('/og-image.jpg', Astro.site || 'https://baumstudios.c
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type": "ArchitecturalFirm",
+        "@type": "Organization",
         "@id": "https://baumstudios.com/#organization",
         "name": "Baum Studios",
         "alternateName": "Baum Studios Architecture",
@@ -127,11 +127,11 @@ const ogImageURL = new URL('/og-image.jpg', Astro.site || 'https://baumstudios.c
         },
         "areaServed": [
           {
-            "@type": "City",
+            "@type": "Place",
             "name": "Zagreb"
           },
           {
-            "@type": "Country",
+            "@type": "Place",
             "name": "Croatia"
           }
         ],
