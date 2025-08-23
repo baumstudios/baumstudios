@@ -11,21 +11,28 @@ const { videos } = Astro.props;
 
 <div class="video-background">
   <div class="video-scroll-container">
-    {videos.map((video, index) => (
-      <div class="video-wrapper">
-        <iframe 
-          src={`https://player.vimeo.com/video/${video.id}?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1`}
-          loading={index <= 1 ? "eager" : "lazy"}
-          title={video.title}
-          aria-label={video.title}
-          frameborder="0"
-          allow="autoplay; fullscreen; picture-in-picture"
-          allowfullscreen
-          webkitallowfullscreen
-          mozallowfullscreen
-        ></iframe>
-      </div>
-    ))}
+    {videos.map((video, index) => {
+      // Handle video ID with or without hash parameter
+      const videoUrl = video.id.includes('?') 
+        ? `https://player.vimeo.com/video/${video.id}&background=1&autoplay=1&loop=1&byline=0&title=0&muted=1`
+        : `https://player.vimeo.com/video/${video.id}?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1`;
+      
+      return (
+        <div class="video-wrapper">
+          <iframe 
+            src={videoUrl}
+            loading={index <= 1 ? "eager" : "lazy"}
+            title={video.title}
+            aria-label={video.title}
+            frameborder="0"
+            allow="autoplay; fullscreen; picture-in-picture"
+            allowfullscreen
+            webkitallowfullscreen
+            mozallowfullscreen
+          ></iframe>
+        </div>
+      );
+    })}
   </div>
 </div>
 
