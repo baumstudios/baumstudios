@@ -116,7 +116,7 @@ body {
 }
 
 .brand-title {
-    font-size: 2.5rem; /* Reduced to fit longer text */
+    font-size: 4rem; /* Reduced to fit longer text */
     font-weight: 800;
     margin: 0;
     letter-spacing: 0.02em;
